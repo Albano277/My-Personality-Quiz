@@ -46,40 +46,38 @@ function displayResult() {
     let totalScore = 0;
 
     // Go through each saved answer
-Object.values(userAnswers).forEach(function(answer) {
-    if (answer === "A") {
-    totalScore += 1;
-    }else if (answer === "B") {
-    totalScore += 2;
-    }else if (answer === "C") {
-    totalScore += 3;
-    }else if (answer === "D") {
-    totalScore += 4;
+    Object.values(userAnswers).forEach(function(answer) {
+        if (answer === "A") {
+            totalScore += 1;
+        } else if (answer === "B") {
+            totalScore += 2;
+        } else if (answer === "C") {
+            totalScore += 3;
+        } else if (answer === "D") {
+            totalScore += 4;
+        }
+    });
+
+    console.log("Total Score:", totalScore);
+
+    // Store the final vacation result
+    let result = "";
+
+    if (totalScore <= 6) {
+        result = "Relaxing Beach Vacation";
+    } else if (totalScore <= 9) {
+        result = "City Explorer Vacation";
+    } else if (totalScore <= 12) {
+        result = "Adventure and Nature Vacation";
+    } else {
+        result = "Food and Culture Vacation";
     }
-});
 
-console.log("Total Score:", totalScore);
-// Store the final vacation result
-let result = "";
+    // Display the result on the page
+    document.getElementById("result-text").textContent = result;
 
-if (totalScore <= 6) {
-    result = "Relaxing Beach Vacation";
-}
-else if (totalScore <= 9) {
-    result = "City Explorer Vacation";
-}
-else if (totalScore <= 12) {
-    result = "Adventure and Nature Vacation";
-}
-else {
-    result = "Food and Culture Vacation";
-}
-
-// Display the result on the page
-document.getElementById("result-text").textContent = result;
-
-// Show the result container
-document.getElementById("result-container").style.display = "block";
+    // Show the result container
+    document.getElementById("result-container").style.display = "block";
 }
 
 // Call displayResult when the Show Results button is clicked
